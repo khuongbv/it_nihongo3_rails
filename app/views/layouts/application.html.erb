@@ -10,13 +10,15 @@
   </head>
 
   <body>
+      <%= link_to "ホーム", root_path %><br>
       <% if user_signed_in? %>
-          <p>こんにちは、<%= current_user.email %></p>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          こんにちは、<%= link_to current_user.email, users_show_path %><br>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %><br>
       <% else %>
-          <%= link_to "サインイン", new_user_session_path %>
-          <%= link_to "ユーザ登録", new_user_registration_path %>
+          <%= link_to "サインイン", new_user_session_path %><br>
+          <%= link_to "ユーザ登録", new_user_registration_path %><br>
       <% end %>
+      <hr>
     <%= yield %>
   </body>
 </html>
